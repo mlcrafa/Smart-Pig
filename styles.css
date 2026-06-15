@@ -86,13 +86,15 @@ header {
 }
 
 .theme-toggle.dark-mode-button {
-  color: #cbd5e1;
+  color: #ffffff;
   border-color: #cbd5e1;
+  background: rgba(0, 0, 0, 0.35); /* fundo mais escuro no estado normal */
 }
 
 .theme-toggle.dark-mode-button:hover {
-  color: var(--accent-green-dark);
-  border-color: var(--accent-green-dark);
+  color: #ffffff;
+  border-color: #ffffff;
+  background: rgba(203, 213, 225, 0.15);
 }
 
 h1 {
