@@ -1,7 +1,30 @@
 :root {
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: #00a30e;
-  background: #000000;
+  
+  /* Cores Base - Tema Claro */
+  --bg-light: #f8fafb;
+  --bg-light-secondary: #ffffff;
+  --text-light: #1a202c;
+  --text-light-muted: #718096;
+  --border-light: #e2e8f0;
+  --accent-green: #059669;
+  --accent-green-light: #ecfdf5;
+  --accent-blue: #0f7ee3;
+  --accent-red: #dc2626;
+  --accent-yellow: #f59e0b;
+  
+  /* Cores Base - Tema Escuro */
+  --bg-dark: #0f172a;
+  --bg-dark-secondary: #1e293b;
+  --bg-dark-tertiary: #334155;
+  --text-dark: #f1f5f9;
+  --text-dark-muted: #cbd5e1;
+  --border-dark: #475569;
+  --accent-green-dark: #10b981;
+  --accent-green-dark-light: #064e3b;
+  
+  color: #059669;
+  background: #f8fafb;
 }
 
 * {
@@ -15,7 +38,9 @@ body {
   justify-content: center;
   align-items: flex-start;
   padding: 32px 16px;
-  background: linear-gradient(180deg, #000000 0%, #f8fcff 100%);
+  background: var(--bg-light);
+  color: var(--text-light);
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -27,47 +52,109 @@ header {
   margin-bottom: 24px;
 }
 
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.theme-toggle {
+  background: transparent;
+  border: 2px solid var(--accent-green);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  color: var(--accent-green);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  position: absolute;
+  right: 0;
+}
+
+.theme-toggle:hover {
+  background: var(--accent-green-light);
+  transform: scale(1.1);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+}
+
+.theme-toggle.dark-mode-button {
+  color: #cbd5e1;
+  border-color: #cbd5e1;
+}
+
+.theme-toggle.dark-mode-button:hover {
+  color: var(--accent-green-dark);
+  border-color: var(--accent-green-dark);
+}
+
 h1 {
   margin: 0;
   font-size: clamp(2rem, 2.5vw, 3rem);
-  color: #0f2a49;
+  color: var(--text-light);
+}
+
+h2 {
+  margin: 0 0 16px 0;
+  font-size: 1.5rem;
+  color: var(--text-light);
+  font-weight: 700;
+}
+
+h3 {
+  margin: 0 0 12px 0;
+  font-size: 1.125rem;
+  color: var(--text-light);
+  font-weight: 600;
 }
 
 p {
   margin: 12px auto 0;
   max-width: 720px;
-  color: #4c5b70;
+  color: var(--text-light-muted);
 }
 
 .card {
-  background: rgb(140, 207, 137);
-  border-radius: 24px;
+  background: var(--bg-light-secondary);
+  border-radius: 16px;
   padding: 24px;
-  box-shadow: 0 18px 40px rgb(53, 143, 65);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--border-light);
   margin-bottom: 20px;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .input-card label,
 .expense-form label {
   display: block;
   margin-bottom: 12px;
-  color: #001fcfde;
+  color: var(--text-light);
+  font-weight: 500;
 }
 
 input[type="text"],
 input[type="number"] {
   width: 100%;
   padding: 12px 14px;
-  border: 1px solid #d8e2f0;
-  border-radius: 14px;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
   font-size: 1rem;
-  color: #004704;
+  color: var(--text-light);
+  background: var(--bg-light-secondary);
   outline: none;
-  transition: border-color 0.15s ease;
+  transition: border-color 0.15s ease, background 0.15s ease;
 }
 
 input:focus {
-  border-color: #4b8bff;
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 3px rgba(15, 126, 227, 0.1);
 }
 
 .grid-2 {
@@ -84,17 +171,22 @@ input:focus {
 
 button {
   border: none;
-  background: #2563eb;
+  background: var(--accent-green);
   color: white;
   padding: 12px 18px;
-  border-radius: 14px;
+  border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 button:hover {
-  background: #1e4db7;
+  background: #047857;
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(0);
 }
 
 .month-control {
@@ -108,23 +200,24 @@ button:hover {
   flex: 1;
   min-width: 180px;
   padding: 12px 14px;
-  border: 1px solid #d8e2f0;
-  border-radius: 14px;
-  background: white;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  background: var(--bg-light-secondary);
   font-size: 1rem;
-  color: #1b2938;
+  color: var(--text-light);
+  transition: border-color 0.15s ease;
 }
 
 .small-button {
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 8px 12px;
-  background: #ef4444;
+  background: var(--accent-red);
   color: white;
   font-weight: 600;
 }
 
 .small-button:hover {
-  background: #c81d1d;
+  background: #b91c1c;
 }
 
 .tables-row {
@@ -139,12 +232,19 @@ table {
 }
 
 thead tr {
-  background: #eef5ff;
+  background: var(--accent-green-light);
 }
+
 th, td {
   text-align: left;
   padding: 12px 14px;
-  border-bottom: 1px solid #e3eaf5;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-light);
+}
+
+th {
+  color: var(--accent-green);
+  font-weight: 600;
 }
 
 tbody tr:last-child td {
@@ -158,44 +258,128 @@ tbody tr:last-child td {
 }
 
 .summary-item {
-  background: #f4f8ff;
-  border-radius: 16px;
+  background: var(--accent-green-light);
+  border-radius: 12px;
   padding: 18px;
+  border: 1px solid rgba(5, 150, 105, 0.2);
+  transition: background 0.3s ease;
+}
+
+.summary-item span {
+  display: block;
+  color: var(--text-light-muted);
+  font-size: 0.875rem;
+  margin-bottom: 8px;
+}
+
+.summary-item strong {
+  display: block;
+  color: var(--accent-green);
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
 .summary-item.full-width {
   grid-column: 1 / -1;
 }
 
-.summary-item span {
-  display: block;
-  color: #5a6b82;
-  margin-bottom: 8px;
+/* ===== TEMA ESCURO ===== */
+body.dark-theme {
+  background: var(--bg-dark);
+  color: var(--text-dark);
 }
 
-.summary-item strong {
-  font-size: 1.35rem;
-  color: #0f2a49;
+body.dark-theme h1 {
+  color: var(--text-dark);
 }
 
-.buttons-row {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 20px;
+body.dark-theme h2 {
+  color: var(--text-dark);
 }
 
-#resetBtn {
-  background: #ef4444;
+body.dark-theme h3 {
+  color: var(--text-dark);
 }
 
-#resetBtn:hover {
-  background: #c81d1d;
+body.dark-theme p {
+  color: var(--text-dark-muted);
 }
 
-@media (max-width: 840px) {
-  .grid-2,
-  .tables-row,
-  .summary-grid {
-    grid-template-columns: 1fr;
-  }
+body.dark-theme .card {
+  background: var(--bg-dark-secondary);
+  border-color: var(--border-dark);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-theme label {
+  color: var(--text-dark);
+}
+
+body.dark-theme input[type="text"],
+body.dark-theme input[type="number"] {
+  background: var(--bg-dark-tertiary);
+  border-color: var(--border-dark);
+  color: var(--text-dark);
+}
+
+body.dark-theme input[type="text"]:focus,
+body.dark-theme input[type="number"]:focus {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 3px rgba(15, 126, 227, 0.2);
+  background: var(--bg-dark-tertiary);
+}
+
+body.dark-theme select {
+  background: var(--bg-dark-tertiary);
+  border-color: var(--border-dark);
+  color: var(--text-dark);
+}
+
+body.dark-theme .month-select {
+  background: var(--bg-dark-tertiary);
+  border-color: var(--border-dark);
+  color: var(--text-dark);
+}
+
+body.dark-theme thead tr {
+  background: var(--accent-green-dark-light);
+}
+
+body.dark-theme th {
+  color: var(--accent-green-dark);
+}
+
+body.dark-theme td {
+  color: var(--text-dark);
+  border-bottom-color: var(--border-dark);
+}
+
+body.dark-theme .summary-item {
+  background: var(--accent-green-dark-light);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+body.dark-theme .summary-item span {
+  color: var(--text-dark-muted);
+}
+
+body.dark-theme .summary-item strong {
+  color: var(--accent-green-dark);
+}
+
+body.dark-theme button {
+  background: var(--accent-green-dark);
+}
+
+body.dark-theme button:hover {
+  background: #059669;
+}
+
+body.dark-theme .theme-toggle {
+  border-color: var(--accent-green-dark);
+  color: var(--accent-green-dark);
+}
+
+body.dark-theme .theme-toggle:hover {
+  background: var(--accent-green-dark-light);
 }
