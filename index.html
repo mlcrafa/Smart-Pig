@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Porquinho Inteligente</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Porquinho Inteligente</h1>
+      <p>Controle salário, ganhos extras, gastos fixos e variáveis do seu mês.</p>
+    </header>
+
+    <section class="card month-card">
+      <h2>Período</h2>
+      <div class="month-control">
+        <button id="prevMonthBtn" type="button">Anterior</button>
+        <select id="monthSelect" class="month-select"></select>
+        <button id="nextMonthBtn" type="button">Próximo</button>
+      </div>
+    </section>
+
+    <section class="card input-card">
+      <h2>Renda Mensal</h2>
+      <div class="grid-2">
+        <label>
+          Salário
+          <input id="salary" type="number" min="0" step="0.01" placeholder="0.00" />
+        </label>
+        <label>
+          Ganhos Extras
+          <input id="extraIncome" type="number" min="0" step="0.01" placeholder="0.00" />
+        </label>
+      </div>
+    </section>
+
+    <section class="card expenses-card">
+      <h2>Despesas</h2>
+      <div class="expense-form">
+        <div class="grid-2">
+          <label>
+            Despesa fixa
+            <input id="fixedName" type="text" placeholder="Ex: Aluguel" />
+          </label>
+          <label>
+            Valor fixa
+            <input id="fixedValue" type="number" min="0" step="0.01" placeholder="0.00" />
+          </label>
+        </div>
+        <button id="addFixedBtn" type="button">Adicionar fixa</button>
+      </div>
+
+      <div class="expense-form">
+        <div class="grid-2">
+          <label>
+            Despesa variável
+            <input id="variableName" type="text" placeholder="Ex: Mercado" />
+          </label>
+          <label>
+            Valor variável
+            <input id="variableValue" type="number" min="0" step="0.01" placeholder="0.00" />
+          </label>
+        </div>
+        <button id="addVariableBtn" type="button">Adicionar variável</button>
+      </div>
+
+      <div class="tables-row">
+        <div>
+          <h3>Fixas</h3>
+          <table id="fixedTable">
+            <thead><tr><th>Nome</th><th>Valor</th><th>Ações</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div>
+          <h3>Variáveis</h3>
+          <table id="variableTable">
+            <thead><tr><th>Nome</th><th>Valor</th><th>Ações</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="card summary-card">
+      <h2>Resumo do mês</h2>
+      <div class="summary-grid">
+        <div class="summary-item">
+          <span>Total de renda</span>
+          <strong id="totalIncome">R$ 0,00</strong>
+        </div>
+        <div class="summary-item">
+          <span>Total despesas fixas</span>
+          <strong id="totalFixed">R$ 0,00</strong>
+        </div>
+        <div class="summary-item">
+          <span>Total despesas variáveis</span>
+          <strong id="totalVariable">R$ 0,00</strong>
+        </div>
+        <div class="summary-item">
+          <span>Economia líquida</span>
+          <strong id="netSavings">R$ 0,00</strong>
+        </div>
+        <div class="summary-item full-width">
+          <span>Porcentagem de economia</span>
+          <strong id="savingsPercent">0%</strong>
+        </div>
+      </div>
+      <div class="buttons-row">
+        <button id="resetBtn" type="button">Limpar dados</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
