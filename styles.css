@@ -285,6 +285,14 @@ tbody tr:last-child td {
   grid-column: 1 / -1;
 }
 
+/* Espaçamento para o botão de ações na seção de resumo */
+.buttons-row {
+  margin-top: 20px; /* empurra o botão para baixo */
+  display: flex;
+  justify-content: flex-end; /* alinha o botão à direita */
+  gap: 12px;
+}
+
 /* ===== TEMA ESCURO ===== */
 body.dark-theme {
   background: var(--bg-dark);
